@@ -44,7 +44,7 @@ public class ProductDTO {
     }
 
     public void setCategoryId(Long categoryId) {
-        categoryId = categoryId;
+        this.categoryId = categoryId;
     }
 
     public ProductDTO(Long id, String name, String description, Double price, Long categoryId) {
@@ -52,7 +52,7 @@ public class ProductDTO {
         this.name = name;
         this.description = description;
         this.price = price;
-        categoryId = categoryId;
+        this.categoryId = categoryId;
     }
 
     public ProductDTO() {
