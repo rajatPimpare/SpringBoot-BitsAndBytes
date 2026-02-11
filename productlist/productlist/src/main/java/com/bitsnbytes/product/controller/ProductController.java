@@ -5,6 +5,7 @@ import com.bitsnbytes.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class ProductController {
 
     // create product
     @PostMapping
+    @PreAuthorize("hasAuthority('ROLE_SELLER')")
     public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO){
         ProductDTO createdProduct = productService.createProduct(productDTO);
         return new ResponseEntity<>(createdProduct, HttpStatus.CREATED);
@@ -43,6 +45,7 @@ public class ProductController {
 
     // Delete Product
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ROLE_SELLER')")
     public String deleteProduct(@PathVariable Long id){
         return productService.deleteProduct(id);
     }
